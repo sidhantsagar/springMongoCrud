@@ -20,4 +20,9 @@ public class BookMapper {
 		return Author.builder().authorId(authorDetails.getAuthorId()).name(authorDetails.getName())
 				.emailId(authorDetails.getEmail()).build();
 	}
+
+	public Book mapBookToUpdate(BookObject bookBo) {
+		return Book.builder().bookId(bookBo.getBookId()).name(bookBo.getName()).count(bookBo.getCount())
+				.price(bookBo.getPrice()).author(authotDetailsToAuthorMapper(bookBo.getAuthorDetails())).build();
+	}
 }

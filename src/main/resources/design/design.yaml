@@ -129,12 +129,15 @@ components:
           type: number
           example: 10
         author:
-          $ref: '#/components/schemas/Author'
+          $ref: '#/components/schemas/AuthorDetails'
         count:
           type: number
-    Author:
+    AuthorDetails:
       type: object
       properties:
+        authorId:
+          type: number
+          example: fehguy
         name:
           type: string
           example: fehguy
