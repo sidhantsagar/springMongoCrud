@@ -1,0 +1,144 @@
+openapi: 3.0.3
+info:
+  title: Swagger Bookstore 
+  description: Sidhant's Book inventory system
+  version: 1.0.0
+tags:
+  - name: Book
+    description: Everything about your Books
+paths:
+  /book:
+    put:
+      tags:
+        - Book
+      summary: Update an existing Book
+      description: Update an existing Book by Id
+      operationId: updateBook
+      requestBody:
+        description: Update an existent Book in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'   
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Book not found
+        '405':
+          description: Validation exception
+    post:
+      tags:
+        - Book
+      summary: Add a new Book to the store
+      description: Add a new Book to the store
+      operationId: addBook
+      requestBody:
+        description: Create a new Book in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'   
+        '405':
+          description: Invalid input
+    get:
+      tags:
+        - Book
+      summary: Add a new Book to the store
+      description: Add a new Book to the store
+      operationId: getBooks
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'   
+        '405':
+          description: Invalid input
+  /book/{BookId}:
+    get:
+      tags:
+        - Book
+      summary: Find Book by ID
+      description: Returns a single Book
+      operationId: getBookById
+      parameters:
+        - name: BookId
+          in: path
+          description: ID of Book to return
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'   
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Book not found
+    delete:
+      tags:
+        - Book
+      summary: Deletes Book
+      description: delete Book
+      operationId: deleteBook
+      parameters:
+        - name: BookId
+          in: path
+          description: Book id to delete
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Deleted Successfully
+        '400':
+          description: Invalid Book value
+components:
+  schemas:
+    Book:
+      type: object
+      properties:
+        bookId:
+          type: number
+          example: 10
+        name:
+          type: string
+          example: 198772
+        price:
+          type: number
+          example: 10
+        author:
+          $ref: '#/components/schemas/Author'
+        count:
+          type: number
+    Author:
+      type: object
+      properties:
+        name:
+          type: string
+          example: fehguy
+        email:
+          type: string
+    
+  

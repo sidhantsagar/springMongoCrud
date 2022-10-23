@@ -15,11 +15,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class Author {
+public class AuthorDetails {
 	
+	@JsonProperty("authorId")
+	private Long authorId = null;
+
 	@JsonProperty("name")
-	private String name;
-	
-	@JsonProperty("emailId")
-	private String emailId;
+	private String name = null;
+
+	@JsonProperty("email")
+	private String email = null;
 }

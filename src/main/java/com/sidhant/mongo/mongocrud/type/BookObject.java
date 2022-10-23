@@ -15,17 +15,20 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class Book {
+public class BookObject {
+
+	@JsonProperty("bookId")
+	private Integer bookId = null;
 
 	@JsonProperty("name")
-	private String name;
+	private String name = null;
 
 	@JsonProperty("price")
-	private String price;
+	private Integer price = null;
 
-	@JsonProperty("author")
-	private Author author;
+	@JsonProperty("authorDetails")
+	private AuthorDetails authorDetails = null;
 
 	@JsonProperty("count")
-	private Integer count;
+	private Integer count = null;
 }
